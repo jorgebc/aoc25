@@ -6,20 +6,20 @@ fun main() {
     println("AoC day 01")
 
     var password: Int
-    password = partOne("day01/day01-part1-example-input.txt")
+    password = day01PartOne("day01/example-input.txt")
     check(password == 3) { "Part 1 example fail, password should be 3 but was $password" }
 
-    password = partOne("day01/day01-part1-input.txt")
+    password = day01PartOne("day01/input.txt")
     println("Part 1 password: $password")
 
-    password = partTwo("day01/day01-part1-example-input.txt")
+    password = day01PartTwo("day01/example-input.txt")
     check(password == 6) { "Part 2 example fail, password should be 6 but was $password" }
 
-    password = partTwo("day01/day01-part1-input.txt")
+    password = day01PartTwo("day01/input.txt")
     println("Part 2 password: $password")
 }
 
-fun partTwo(filePath: String): Int {
+fun day01PartTwo(filePath: String): Int {
     val rotations = readRotations(filePath)
 
     var dialPosition = INITIAL_DIAL_POSITION
@@ -40,7 +40,7 @@ fun partTwo(filePath: String): Int {
 }
 
 
-fun partOne(filePath: String): Int {
+fun day01PartOne(filePath: String): Int {
     val rotations = readRotations(filePath)
 
     var dialPosition = INITIAL_DIAL_POSITION
