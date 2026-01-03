@@ -1,8 +1,3 @@
-package day02
-
-import isInvalidPartOne
-import isInvalidPartTwo
-import solve
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
