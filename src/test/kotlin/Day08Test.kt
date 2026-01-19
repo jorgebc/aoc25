@@ -24,7 +24,7 @@ class Day08Test {
         val p1 = Point3D(1, 2, 3)
         val p2 = Point3D(1, 2, 4)
         val dist2 = p1.dist2(p2)
-        val closest = solveClosest(listOf(p1, p2))
+        val closest = solveClosest(listOf(p1, p2), Long.MIN_VALUE)
         assertEquals(Closest(p1, p2, dist2), closest)
     }
 
@@ -34,7 +34,7 @@ class Day08Test {
         val p2 = Point3D(1, 2, 4)
         val p3 = Point3D(3, 3, 3)
         val dist2 = p1.dist2(p2)
-        val closest = solveClosest(listOf(p1, p2, p3))
+        val closest = solveClosest(listOf(p1, p2, p3), Long.MIN_VALUE)
         assertEquals(Closest(p1, p2, dist2), closest)
     }
 
@@ -51,8 +51,23 @@ class Day08Test {
         val p9 = Point3D(52, 470, 668)
         val p0 = Point3D(216, 146, 977)
         val p11 = Point3D(425, 690, 689)
-        val dist2 = p2.dist2(p1)
-        val closest = findClosest(listOf(p1, p2, p3, p4, p5, p6, p7, p8, p9, p0, p11).sortedBy { it.x })
+
+        val dist2 = p11.dist2(p1)
+        val closest = findClosest(
+            listOf(p1, p2, p3, p4, p5, p6, p7, p8, p9, p0, p11).sortedBy { it.x },
+            Long.MIN_VALUE
+        )
+
         assertEquals(Closest(p11, p1, dist2), closest)
+    }
+
+    @Test
+    fun `Create junction boxes should create a list of 3d points`() {
+        val lines = listOf("162,817,812", "57,618,57")
+
+        val junctionBoxes = createJunctionBoxes(lines)
+
+        val expectedJunctionBoxes = listOf(Point3D(162, 817, 812), Point3D(57, 618, 57))
+        assertEquals(expectedJunctionBoxes, junctionBoxes)
     }
 }
